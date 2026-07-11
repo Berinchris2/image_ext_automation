@@ -2,6 +2,7 @@ import streamlit as st
 import pytesseract
 from PIL import Image
 from streamlit_paste_button import paste_image_button as pbutton
+from num2words import num2words
 
 st.set_page_config(page_title="Image Text Extractor", page_icon="🔎")
 
@@ -78,5 +79,7 @@ with tab2:
     elif contract_value <= 0:
         st.info("Enter a contract value to calculate the installment.")
     else:
-        installment_value = (contract_value / contract_months) + 10.33
+        installment_value = round((contract_value / contract_months) + 10.33, 2)
+        installment_words = num2words(installment_value).upper()
         st.success(f"Installment value = **{installment_value:.2f}**")
+        st.write(f"In words: **{installment_words}**")
