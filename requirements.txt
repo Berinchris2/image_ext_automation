@@ -2,3 +2,4 @@ streamlit
 pytesseract
 pillow
 streamlit-paste-button
+num2words
